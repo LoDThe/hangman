@@ -1,6 +1,6 @@
 var ALPHABET = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
 var LINE_LENGTH = 8;
-var DEBUG_MODE = 1;
+var DEBUG_MODE = 0;
 var startTime = new Date();
 var definition, word, imageState = 0, mainState;
 var score = 0.0;
@@ -141,12 +141,14 @@ function keyPress(e) {
 	if ((charCode >= 1072) && (charCode <= 1103)) {
 		pressLetter(document.getElementsByClassName("btn-letter")[charCode - 1072]);
 	}
+
+	if (charCode == 13) {
+		startGame();
+	}
 }
 
 document.addEventListener("DOMContentLoaded", onReady);
 document.onkeypress = keyPress
-
-
 
 var timer = setInterval(function() {
     let now = new Date();
