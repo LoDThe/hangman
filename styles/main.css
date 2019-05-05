@@ -1,0 +1,127 @@
+body {
+	margin: 0px;
+	padding-top: 0;
+	padding-bottom: 0;
+	font-family: "Verdana", Times, sans-serif;
+	background-image: url('../img/background.jpg');
+}
+
+#timer-header {
+	font-size: 18px;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.btn-word-letter {
+	border: 1px solid blue;
+	color: white;
+	padding: 10px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 22px;
+	font-family: Monospace;
+	background: rgba(0, 0, 0, 0);
+}
+
+.btn-letter {
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 22px;
+	font-family: Monospace;
+	background: rgba(0, 0, 0, 0);
+}
+
+.btn-letter-active {
+	background-color: #4CAF50;
+}
+
+.btn-letter-inactive {
+	background-color: red;
+}
+
+#content {
+	height: 85%;
+	padding: 10px;
+}
+
+#content > div {
+	height: 100%;
+}
+
+#image-state {
+	width: 33%;
+	float: right;
+}
+
+#text-state {
+	width: 55%;
+	float: left;
+}
+
+#text-state > div > div {
+	margin-top: 5%;
+}
+
+#image-state img {
+	max-width: 100%; 
+	max-height: 100%;
+	display:block; 
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.red {
+	color: red;
+}
+
+.white {
+	color: white;
+}
+
+.lime {
+	color: lime;
+}
+
+li a div {
+	display: inline-block;
+}
+
+ul#nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: lime;
+  text-align: center;
+  padding: 18px 20px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
