@@ -135,7 +135,18 @@ function onReady() {
 	}
 }
 
+function keyPress(e) {
+	var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+
+	if ((charCode >= 1072) && (charCode <= 1103)) {
+		pressLetter(document.getElementsByClassName("btn-letter")[charCode - 1072]);
+	}
+}
+
 document.addEventListener("DOMContentLoaded", onReady);
+document.onkeypress = keyPress
+
+
 
 var timer = setInterval(function() {
     let now = new Date();
