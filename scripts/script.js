@@ -106,6 +106,14 @@ function clearGameState() {
 	}
 }
 
+function checkWordDefinitionState() {
+	if (document.getElementById("game-definition-checkbox").checked) {
+		document.getElementById("word-description").style.display = "block"; // show word definition
+	} else {
+		document.getElementById("word-description").style.display = "none"; // hide word definition
+	}
+}
+
 function startGame() { // starting game (picking random word and definition)
 	var index = Math.floor(Math.random() * data.length);
 	definition = data[index]["definition"];
@@ -124,11 +132,13 @@ function startGame() { // starting game (picking random word and definition)
 	document.getElementById("text-state").style.display = "inline-block";
 	document.getElementById("text-message").style.display = "none";
 
+	checkWordDefinitionState();
 	clearGameState();
 }
 
 function onReady() {
 	document.getElementById("game-start").addEventListener("click", startGame);
+	document.getElementById("game-definition-checkbox").addEventListener("change", checkWordDefinitionState);
 	
 	if (DEBUG_MODE == 1) {
 		startGame();
