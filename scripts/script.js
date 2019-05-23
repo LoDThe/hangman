@@ -45,22 +45,44 @@ function pressLetter(e) {
 		document.getElementById("text-state").style.display = "none";
 		document.getElementById("text-message").style.display = "inline-block";
 
-		var result = document.getElementById("text-message").children[0];
+		var result = document.getElementById("text-message").children[1];
 		let now = new Date();
     	let t = now - startTime;
+    	var delta = 0;
 
-		if (mainState == 0) {
-			result.innerHTML = "Вы проиграли :(<br>Затраченное время (в секундах): " + Math.floor(t / 100) / 10;
-			result.classList.remove("lime");
-			result.classList.add("white");
-		} else {
-			result.innerHTML = "Вы Выиграли!<br>Затраченное время (в секундах): " + Math.floor(t / 100) / 10;
-			result.classList.remove("white");
-			result.classList.add("lime");
+    	if (mainState == 1) {
+    		delta = Math.max(0.5, 1 - Math.floor(t / 1000) / 45);
+    	}
 
-			score += Math.max(0.5, 1 - Math.floor(t / 1000) / 45);
-			document.getElementById("game-score").children[0].innerHTML = "Счёт: " + Math.floor(score * 100) / 100;	
-		}
+    	score += delta;
+    	document.getElementById("game-score").children[0].innerHTML = "Счёт: " + Math.floor(score * 100) / 100;	
+
+    	var newRow = document.createElement("tr");
+    	var dataWord = document.createElement("td");
+    	var dataStatus = document.createElement("td"); 
+    	var dataTime = document.createElement("td");
+    	var dataScore = document.createElement("td");
+
+    	dataWord.innerHTML = word;
+    	dataTime.innerHTML = Math.floor(t / 100) / 10;
+    	dataScore.innerHTML = "+" + Math.floor(delta * 100) / 100;
+
+    	if (mainState == 1) {
+    		dataStatus.innerHTML = "Выигрыш";
+    		className = "bgactive";
+    	} else {
+    		dataStatus.innerHTML = "Проигрыш";
+    		className = "bginactive";
+    	}
+
+    	dataStatus.classList = className;
+
+    	newRow.appendChild(dataWord);
+    	newRow.appendChild(dataStatus);
+    	newRow.appendChild(dataTime);
+    	newRow.appendChild(dataScore);
+
+    	result.insertBefore(newRow, result.children[1]);
 
 		result.style.textAlign = "center";
 	}
@@ -148,11 +170,11 @@ function onReady() {
 function keyPress(e) {
 	var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
 
-	if ((charCode >= 1072) && (charCode <= 1103)) {
+	if ((charCode >= 1072) && (charCode <= 1103)) { // letter
 		pressLetter(document.getElementsByClassName("btn-letter")[charCode - 1072]);
 	}
-
-	if (charCode == 13) {
+	
+	if (charCode == 13) { // enter
 		startGame();
 	}
 }

@@ -1,8 +1,10 @@
 <html>
-	<head>
+	<head> 
 		<meta charset="utf-8">
 		<title>Виселица</title>
 		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" type="text/css" href="styles/nav.css">
+		<link rel="stylesheet" type="text/css" href="styles/table.css">
 		<link rel="icon" href="img/favicon.png" type="image/png" sizes="16x16">
 		<script src="scripts/data.js"></script>
 		<script src="scripts/script.js"></script>
@@ -34,8 +36,17 @@
 		</div>
 
 		<div id="content">
-			<div id="text-message" style="display: none;">
-				<h1 class="center lime">Нажите «Начать игру»</h1>
+			<div id="text-message" style="display: none;" class="center-hor">
+				<h1 class="white">Чтобы&nbsp;продолжить,&nbsp;нажмите&nbsp;«Enter»</h1>
+ 
+				<table id="score-table">
+					<tr>
+						<th>Слово</th>
+						<th>Статус</th>
+						<th>Продолжительность&nbsp;игры</th>
+						<th>Изменение&nbsp;счёта</th>
+					</tr>
+				</table>
 			</div>
 
 			<div id="text-state">
